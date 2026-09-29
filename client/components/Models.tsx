@@ -1,6 +1,6 @@
 import { useModels } from '../hooks/useModels.ts'
 
-function Models({ apiUrl }: { apiUrl: string }) {
+function Models({ apiUrl , onSelected}: { apiUrl: string, onSelected: (model: string) => void }) {
   const { data, isLoading, isError } = useModels(apiUrl)
 
   if (isLoading) {
@@ -15,7 +15,7 @@ function Models({ apiUrl }: { apiUrl: string }) {
     <>
     <ul>
       {data?.map((model) => (
-        <li key={model}><button>{model.id}</button></li>
+        <li key={model}><button onClick={() => onSelected(model.id)}>{model.id}</button></li>
       ))}
     </ul>
     </>

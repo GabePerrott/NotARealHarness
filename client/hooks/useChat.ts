@@ -13,7 +13,6 @@ export function useChatMutation(setResponse: (response: string) => void) {
     mutationFn: ({input, url}: {input: string, url: string}) => postToModel(input, url),
     onSuccess: (data) => {
       setResponse(data.choices[0].message.content)
-      //queryClient.invalidateQueries({ queryKey: ['models'] })
     },
   })
 

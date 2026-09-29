@@ -8,6 +8,7 @@ function App() {
   const queryClient = useQueryClient()
   const [apiUrl, setApiUrl] = useState<string | null>(null)
   const [response, setResponse] = useState<string | null>(null)
+  const [currentModel, setCurrentModel] = useState<string | null>(null)
   const { mutate: sendMessage } = useChatMutation(setResponse)
 
   return (
@@ -27,7 +28,8 @@ function App() {
 
 
         <p>API URL: {apiUrl}</p>
-        <Models apiUrl={apiUrl} />
+        <p>Current Model: {currentModel}</p>
+        <Models apiUrl={apiUrl} onSelected={setCurrentModel} />
         <div>
           <p>{response}</p>
         </div>
@@ -40,7 +42,7 @@ function App() {
         sendMessage({input: e.target[0].value, url: apiUrl})
         e.target.reset()
         }}>
-          <input type="text" placeholder="Say something to an LLM" />
+          <input type="text" placeholder={`Say something to ${currentModel}`} />
         </form>
       </div>
     </>
