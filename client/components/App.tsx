@@ -42,7 +42,7 @@ function App() {
         sendMessage({input: e.target[0].value, url: apiUrl})
         e.target.reset()
         }}>
-          <input type="text" placeholder={`Say something to ${currentModel}`} />
+          <input type="text" disabled={!currentModel} placeholder={`Say something to ${currentModel}`} />
         </form>
       </div>
     </>
