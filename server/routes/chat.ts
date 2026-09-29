@@ -4,9 +4,9 @@ import request from 'superagent'
 const router = Router()
 
 router.post('/', async (req, res) => {
-  console.log('request params:', req.params)
+  console.log('chat request query:', req.query)
   try {
-    const chatResponse = await request.post('http://127.0.0.1:8731/v1/chat/completions').send(req.body)
+    const chatResponse = await request.post(`${req.query.url}/v1/chat/completions`).send(req.body)
     await res.json(chatResponse.body)
   } catch (error) {
     console.log(error)

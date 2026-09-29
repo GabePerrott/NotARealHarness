@@ -1,7 +1,7 @@
 import { useModels } from '../hooks/useModels.ts'
 
-function Models() {
-  const { data, isLoading, isError } = useModels()
+function Models({ apiUrl }: { apiUrl: string }) {
+  const { data, isLoading, isError } = useModels(apiUrl)
 
   if (isLoading) {
     return <p>Loading models...</p>
